@@ -2,12 +2,20 @@
 
 let test = 0;
 
+const oneSec = () => {
+    setTimeout(() => {
+        test++;
+        return test;
+    }, 1000);
+}
+
 const testPromise = () => {
     new Promise((resolve, reject) => {
-        setTimeout(() => {
-            test++;
-            resolve("after " + test + " sec");
-        }, 1000);
+        resolve(oneSec()); // undefined
+        // setTimeout(() => {
+        //     test++;
+        //     resolve("after " + test + " sec");
+        // }, 1000);
     }).then((val) => {
         console.log(val);
         setTimeout(testPromise, 1000);
