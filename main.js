@@ -9,12 +9,8 @@ const testPromise = () => {
             resolve("after " + test + " sec");
         }, 1000);
     }).then((val) => {
-        console.log(`then1: ${val}`);
-        setTimeout(() => {
-            // test++;
-            // resolve(test);
-            testPromise();
-        }, 1000);
+        console.log(val);
+        setTimeout(testPromise, 1000);
     });
     //     .then((val) => {
     //     console.log(`then2: ${val}`);
